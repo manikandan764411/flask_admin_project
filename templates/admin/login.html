@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from demo.bootstrapdash.com/skydash/themes/vertical-default-dark/pages/samples/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jan 2026 05:05:38 GMT -->
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Admin Title</title>
+  <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/vendors/feather/feather.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/vendors/ti-icons/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/vendors/font-awesome/css/font-awesome.min.css') }}">
+
+
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/vertical-layout-dark/style.css') }}">
+
+  <!-- endinject -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/images/favicon.png') }}">
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-transparent text-start py-5 px-4 px-sm-5">
+              <!-- <div class="brand-logo">
+                <img src="https://demo.bootstrapdash.com/skydash/themes/assets/images/logo.svg" alt="logo">
+              </div> -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+             {% if messages %}
+             {% for category, message in messages %}
+               <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+               {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+             {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+              <h4>Hello! let's get started</h4>
+              <h6 class="fw-light">Sign in to continue.</h6>
+             <form class="pt-3" method="POST" action="{{ url_for('admin.login') }}">
+                <div class="form-group">
+                    <input type="text"
+                        class="form-control form-control-lg"
+                        name="username"
+                        placeholder="Username"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <input type="password"
+                        class="form-control form-control-lg"
+                        name="password"
+                        placeholder="Password"
+                        required>
+                </div>
+
+                <div class="mt-3 d-grid gap-2">
+                    <button type="submit"
+                            class="btn btn-block btn-primary btn-lg fw-medium auth-form-btn">
+                    SIGN IN
+                    </button>
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                </div>
+                
+                <div class="my-2 d-flex justify-content-between align-items-center">
+                  <div class="form-check">
+                    <label class="form-check-label text-muted">
+                      <input type="checkbox" class="form-check-input">
+                      Keep me signed in
+                    </label>
+                  </div>
+                  <a href="#" class="auth-link text-primary">Forgot password?</a>
+                </div>
+                <!-- <div class="mb-2 d-grid gap-2">
+                  <button type="button" class="btn btn-block btn-facebook auth-form-btn">
+                    <i class="ti-facebook me-2"></i>Connect using facebook
+                  </button>
+                </div> -->
+                <!-- <div class="text-center mt-4 fw-light">
+                  Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                </div> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+ 
+</body>
+
+
+<!-- Mirrored from demo.bootstrapdash.com/skydash/themes/vertical-default-dark/pages/samples/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jan 2026 05:05:38 GMT -->
+</html>
+<script src="{{ url_for('static', filename='admin/vendors/js/vendor.bundle.base.js') }}"></script>

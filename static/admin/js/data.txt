@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "Quote": "QT-001",
+      "Product": "Health Insurance",
+      "Business": "Individual",
+      "Policy": "John Doe",
+      "Premium": "$500",
+      "Status": "Active",
+      "Updated": "2024-01-15"
+    },
+    {
+      "Quote": "QT-002",
+      "Product": "Life Insurance",
+      "Business": "Family",
+      "Policy": "Jane Smith",
+      "Premium": "$800",
+      "Status": "Pending",
+      "Updated": "2024-01-16"
+    },
+    {
+      "Quote": "QT-003",
+      "Product": "Auto Insurance",
+      "Business": "Individual",
+      "Policy": "Bob Johnson",
+      "Premium": "$300",
+      "Status": "Active",
+      "Updated": "2024-01-17"
+    },
+    {
+      "Quote": "QT-004",
+      "Product": "Home Insurance",
+      "Business": "Family",
+      "Policy": "Alice Williams",
+      "Premium": "$600",
+      "Status": "Active",
+      "Updated": "2024-01-18"
+    },
+    {
+      "Quote": "QT-005",
+      "Product": "Travel Insurance",
+      "Business": "Individual",
+      "Policy": "Charlie Brown",
+      "Premium": "$200",
+      "Status": "Cancelled",
+      "Updated": "2024-01-19"
+    }
+  ]
+}
+

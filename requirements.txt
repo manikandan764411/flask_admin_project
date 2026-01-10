@@ -1,0 +1,6 @@
+pip install flask flask-sqlalchemy flask-mysqldb pymysql
+flask
+flask-sqlalchemy
+pymysql
+
+
