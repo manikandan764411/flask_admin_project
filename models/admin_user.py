@@ -5,7 +5,7 @@ class AdminUser(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    
+    user_type_id = db.Column(db.Integer, db.ForeignKey('user_type.id'), nullable=False)
 
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
@@ -21,12 +21,5 @@ class AdminUser(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
-class UserType(db.Model):
-    __tablename__ = 'user_type'
-    id = db.Column(db.Integer, primary_key=True)
-    user_role = db.Column(db.String(50), nullable=False)
-    code = db.Column(db.String(30), unique=True, nullable=False)
-    is_active = db.Column(db.Boolean, default=True)
 
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
