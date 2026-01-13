@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 from werkzeug.security import check_password_hash
 from models.admin_user import AdminUser
 from functools import wraps
+from helpers.sidebar import get_sidebar
+
 
 
 
@@ -22,24 +24,34 @@ def admin_login_required(f):
 
 
 
-@admin_bp.route('/')
-@admin_login_required
-def home():
-    return render_template('admin/login.html')
+# @admin_bp.route('/')
+# @admin_login_required
+# def home():
+#     return render_template('admin/login.html')
+
+# @admin_bp.route('/dashboard')
+# @admin_login_required
+# def dashboard():
+#     return render_template('admin/index.html')
+
 
 @admin_bp.route('/dashboard')
 @admin_login_required
 def dashboard():
-    return render_template('admin/index.html')
+    sidebar = get_sidebar(session['user_type_id'])
+    return render_template('admin/index.html', sidebar=sidebar)
+
 
 @admin_bp.route('/register')
 def demo():
     return render_template('admin/register.html')
 
+
 @admin_bp.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.clear()   # removes all session data
     return redirect(url_for('admin.login'))
+
 
 
 @admin_bp.route('/login', methods=['GET', 'POST'])
@@ -58,6 +70,7 @@ def login():
             session['admin_logged_in'] = True
             session['admin_id'] = user.id
             session['admin_username'] = user.username
+            session['user_type_id'] = user.user_type_id
             flash('Login successful!', 'success')
             return redirect(url_for('admin.dashboard')) 
         else:
@@ -65,5 +78,7 @@ def login():
             return redirect(url_for('admin.dashboard'))
 
     return render_template('admin/login.html')
+
+
 
     

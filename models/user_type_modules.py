@@ -23,3 +23,6 @@ class UserTypeModule(db.Model):
     __table_args__ = (
         db.UniqueConstraint("user_type_id", "module_id"),
     )
+
+    module = db.relationship("Module")
+

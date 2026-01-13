@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
-  <ul class="nav">
+  <!-- <ul class="nav">
     <li class="nav-item">
       <a class="nav-link" href="{{ url_for('admin.dashboard') }}">
         <i class="icon-grid menu-icon"></i>
@@ -255,5 +255,16 @@
         <span class="menu-title">Documentation</span>
       </a>
     </li>
-  </ul>
+  </ul> -->
+<ul class="nav">
+  {% for m in sidebar %}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ m.url }}">
+        <i class="{{ m.icon }}"></i>
+        <span>{{ m.name }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
 </nav>

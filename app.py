@@ -7,6 +7,10 @@ from controllers.admin_controller import admin_bp
 from config import Config
 from flask_migrate import Migrate
 from auth_guard import admin_auth_guard
+from helpers.sidebar import get_sidebar
+
+from controllers.admin_users import admin_users_bp
+
 
 # Fix MIME types for Windows
 mimetypes.add_type('text/css', '.css')
@@ -24,7 +28,7 @@ def create_app():
     app.secret_key = 'super-secret-key'
 
     # ✅ Session timeout
-    app.permanent_session_lifetime = timedelta(minutes=1)
+    app.permanent_session_lifetime = timedelta(minutes=10)
 
     # ✅ Init extensions (ONLY ONCE)
     db.init_app(app)
@@ -35,6 +39,9 @@ def create_app():
 
     # ✅ Register blueprints
     app.register_blueprint(admin_bp)
+
+    app.register_blueprint(admin_users_bp)
+
 
     # ✅ Auth guard
     app.before_request(admin_auth_guard)

@@ -7,6 +7,9 @@ class Module(db.Model):
 
     name = db.Column(db.String(100), nullable=False)
 
+    url = db.Column(db.String(150), nullable=False)
+    icon = db.Column(db.String(50), nullable=True)
+
     parent_id = db.Column(
         db.Integer,
         db.ForeignKey("modules.id"),
@@ -17,3 +20,9 @@ class Module(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
+    # ✅ Correct self-referential relationship
+    parent = db.relationship(
+        "Module",      # ← Use the class name, not table name
+        remote_side=[id],
+        backref="children"
+    )
