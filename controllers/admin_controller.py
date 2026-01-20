@@ -4,9 +4,6 @@ from models.admin_user import AdminUser
 from functools import wraps
 from helpers.sidebar import get_sidebar
 
-
-
-
 admin_bp = Blueprint(
     'admin',
     __name__,
@@ -51,7 +48,6 @@ def demo():
 def logout():
     session.clear()   # removes all session data
     return redirect(url_for('admin.login'))
-
 
 
 @admin_bp.route('/login', methods=['GET', 'POST'])

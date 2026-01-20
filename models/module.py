@@ -20,9 +20,8 @@ class Module(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
-    # ✅ Correct self-referential relationship
-    parent = db.relationship(
-        "Module",      # ← Use the class name, not table name
-        remote_side=[id],
-        backref="children"
+    # ✅ SELF RELATION (THIS IS THE FIX)
+    children = db.relationship(
+        "Module",
+        backref=db.backref("parent", remote_side=[id])
     )

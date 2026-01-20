@@ -10,6 +10,8 @@ from auth_guard import admin_auth_guard
 from helpers.sidebar import get_sidebar
 
 from controllers.admin_users import admin_users_bp
+from controllers.modules_controller import modules_bp 
+
 
 
 # Fix MIME types for Windows
@@ -39,9 +41,8 @@ def create_app():
 
     # ✅ Register blueprints
     app.register_blueprint(admin_bp)
-
     app.register_blueprint(admin_users_bp)
-
+    app.register_blueprint(modules_bp)
 
     # ✅ Auth guard
     app.before_request(admin_auth_guard)

@@ -1,4 +1,5 @@
 from extensions import db
+from models.module import Module
 
 class UserTypeModule(db.Model):
     __tablename__ = "user_type_modules"
@@ -7,7 +8,7 @@ class UserTypeModule(db.Model):
 
     user_type_id = db.Column(
         db.Integer,
-        db.ForeignKey("user_type.id"),
+        db.ForeignKey("user_types.id"),
         nullable=False
     )
 
@@ -17,12 +18,5 @@ class UserTypeModule(db.Model):
         nullable=False
     )
 
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
-
-    __table_args__ = (
-        db.UniqueConstraint("user_type_id", "module_id"),
-    )
-
+    # ✅ THIS WAS MISSING → CAUSE OF YOUR ERROR
     module = db.relationship("Module")
-

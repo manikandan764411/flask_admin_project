@@ -5,7 +5,7 @@ from functools import wraps
 admin_users_bp = Blueprint(
     'admin_users',
     __name__,
-    url_prefix='/admin/admin_users'
+    url_prefix='/admin'
 )
 
 def login_required(f):
@@ -16,8 +16,8 @@ def login_required(f):
         return f(*args, **kwargs)
     return wrap
 
-@admin_users_bp.route('/')
+@admin_users_bp.route('/demo')
 @login_required
 def index():
     sidebar = get_sidebar(session['user_type_id'])
-    return render_template('admin/admin_users.html', sidebar=sidebar)
+    return render_template('admin/demo.html', sidebar=sidebar)
