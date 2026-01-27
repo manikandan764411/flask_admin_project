@@ -10,7 +10,10 @@ from auth_guard import admin_auth_guard
 from helpers.sidebar import get_sidebar
 
 from controllers.admin_users import admin_users_bp
-from controllers.modules_controller import modules_bp 
+from controllers.modules_controller import modules_bp
+from controllers.company import company_bp
+# Import models so Alembic can detect them
+import models 
 
 
 
@@ -43,7 +46,7 @@ def create_app():
     app.register_blueprint(admin_bp)
     app.register_blueprint(admin_users_bp)
     app.register_blueprint(modules_bp)
-
+    app.register_blueprint(company_bp)
     # ✅ Auth guard
     app.before_request(admin_auth_guard)
     

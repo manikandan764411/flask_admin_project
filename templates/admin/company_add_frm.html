@@ -1,0 +1,97 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard - Admin Title{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12 grid-margin">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+             {% if messages %}
+             {% for category, message in messages %}
+               <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+               {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+             {% endfor %}
+              {% endif %}
+            {% endwith %}
+    <div class="row">
+      <!-- <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+        <h3 class="fw-bold">Welcome Manikandan</h3>
+       
+        <h6 class="fw-normal mb-0">All systems are running smoothly! You have <span class="text-info">3 unread
+            alerts!</span></h6>
+      </div> -->
+
+      <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Company Add</h4>
+                  <!-- <p class="card-description">
+                    Add class <code>.table-hover</code>
+                  </p> -->
+
+                  <!-- <div class="text-end mb-3">
+                    <a href="{{ url_for('modules.module_create') }}"
+                      class="btn btn-primary btn-rounded btn-fw">
+                      Add
+                    </a>
+                  </div> -->
+
+
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Company Name</th>
+                          <th>Company Email</th>
+                          <th>Company Mobile Number</th>
+                          <th>Company Address</th>
+                          <th>Company GST Number</th>
+                          <th>Company Website</th>
+                          <th>Company Logo</th>
+                          <!-- <th>Icon</th> -->
+                          <th>Status</th>
+                          <th>Created Datetime</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for company in companies %}
+                          <tr>
+                              <td>{{ company.name }}</td>
+                              <td>{{ company.email }}</td>
+                              <td>{{ company.mobile_number }}</td>
+                              <td>{{ company.address }}</td>
+                              <td>{{ company.gst_number }}</td>
+                              <td>{{ company.website }}</td>
+                              <td>{{ company.logo }}</td>
+                              <!-- <td><i class="{{ module.icon }}"></i>{{ module.icon }}</td> -->
+                              <td>
+                                  {% if company.is_active %}
+                                      <span class="badge bg-success">Active</span>
+                                  {% else %}
+                                      <span class="badge bg-danger">Inactive</span>
+                                  {% endif %}
+                              </td>
+                              <td>{{ company.created_at }}</td>
+                              <td></td>
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+   
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
